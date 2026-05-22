@@ -340,7 +340,7 @@ const formatDateRange = (start, end) => {
   }
 
 .search-page-container {
-  height: 100dvh; // dvh accounts for mobile browser dynamic toolbars
+  height: calc(100dvh - var(--component-navbar-height)); // dvh accounts for mobile browser dynamic toolbars
   overflow: hidden;
 }
 

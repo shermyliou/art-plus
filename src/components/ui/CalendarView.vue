@@ -153,7 +153,7 @@ const getEventsForDay = (date) => {
     </div>
 
     <!-- Calendar Grid -->
-    <div class="calendar-container bg-white rounded-3 overflow-hidden border">
+    <div class="calendar-container bg-white rounded-3 border">
       <!-- Weekday Labels -->
       <div class="weekday-header d-flex border-bottom">
         <div v-for="day in days" :key="day" class="weekday-cell text-center py-2">
@@ -223,15 +223,37 @@ const getEventsForDay = (date) => {
 
 .calendar-container {
   width: 100%;
-  table-layout: fixed; // 類似表格的固定佈局行為
+  overflow: hidden;
 }
 
 .weekday-cell, .date-cell, .day-column {
-  width: 14.285%; // 強制鎖定為 1/7 寬度
-  flex: 0 0 14.285%; // 禁用彈性縮放，固定寬度
-  min-width: 0; // 允許文字截斷生效
+  width: 14.285%;
+  flex: 0 0 14.285%;
+  min-width: 0;
   border-right: 1px solid var(--border-default-default);
   &:last-child { border-right: none; }
+}
+
+// 平板：顯示 4 天，其餘可橫向滑動
+@media (max-width: 768px) {
+  .calendar-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .weekday-cell, .date-cell, .day-column {
+    width: 25%;
+    flex: 0 0 25%;
+  }
+}
+
+// 手機：顯示 2 天，其餘可橫向滑動
+@media (max-width: 576px) {
+  .weekday-cell, .date-cell, .day-column {
+    width: 50%;
+    flex: 0 0 50%;
+  }
 }
 
 .weekday-header {
