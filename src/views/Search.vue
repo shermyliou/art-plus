@@ -4,11 +4,17 @@ import CalendarView from '@/components/ui/CalendarView.vue';
 import FilterSidebar from '@/components/ui/FilterSidebar.vue';
 import { Icon } from '@iconify/vue';
 import { ref, computed, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import { useEventStore } from '@/stores/useEventStore';
 
 const eventStore = useEventStore();
-const searchQuery = ref('');
+const route = useRoute();
+const searchQuery = ref(route.query.q || '');
 const showCalendar = ref(false);
+
+watch(() => route.query.q, (newVal) => {
+  searchQuery.value = newVal || '';
+});
 
 watch(searchQuery, (newVal) => {
   document.title = newVal ? `${newVal}｜Arts+搜尋結果` : 'Arts+搜尋結果';

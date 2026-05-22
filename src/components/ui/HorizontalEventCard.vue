@@ -65,7 +65,7 @@ const handleFavoriteClick = () => {
 </script>
 
 <template>
-  <div class="horizontal-event-card">
+  <div class="horizontal-event-card align-items-center">
     <div class="horizontal-event-card__image">
       <img :src="image" :alt="title" />
     </div>
