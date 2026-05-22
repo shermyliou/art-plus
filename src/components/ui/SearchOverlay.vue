@@ -100,30 +100,21 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 .search-overlay-container {
-  position: fixed;
-  top: var(--component-navbar-height);
-  right: 60px; // matches navbar padding at ≥1200px
-  width: 600px;
+  // 以搜尋列為錨點定位，寬度與左右緣自動對齊，無需硬編碼數值
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 0;
+  right: 0;
   z-index: 2050;
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 1400px) {
-    width: 500px;
-  }
-
-  @media (max-width: 1200px) {
-    right: 20px; // matches navbar padding at <1200px
-  }
-
-  @media (max-width: 992px) {
-    width: 400px;
-  }
-
   @media (max-width: 768px) {
-    right: 0;
+    position: fixed;
+    top: var(--component-navbar-height);
     left: 0;
-    width: calc(100vw - 16px);
+    right: 0;
+    width: 100vw;
     border-radius: 0;
   }
 }

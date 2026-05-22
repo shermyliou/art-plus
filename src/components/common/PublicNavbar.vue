@@ -41,45 +41,45 @@ const closeSearch = () => {
       </a>
 
       <div class="d-flex align-items-center gap-md-4 gap-0 ms-4 h-100">
-        <div
-          class="search-wrapper animate-entrance"
-          style="animation-delay: 0.1s"
-          :class="{ 'expanded': isSearchVisible }"
-          @click="!isSearchVisible && expandSearch()"
-        >
-          <div class="search-bar-inner d-flex align-items-center gap-2 px-md-3 px-0">
-            <button
-              v-if="isSearchVisible"
-              class="btn btn-close-search p-0 d-md-none"
-              @click.stop="closeSearch"
-            >
-              <Icon icon="ph:caret-left" width="24px" />
-            </button>
+        <div class="search-anchor d-flex align-items-center h-100 position-relative">
+          <div
+            class="search-wrapper animate-entrance"
+            style="animation-delay: 0.1s"
+            :class="{ 'expanded': isSearchVisible }"
+            @click="!isSearchVisible && expandSearch()"
+          >
+            <div class="search-bar-inner d-flex align-items-center gap-2 px-md-3 px-0">
+              <button
+                v-if="isSearchVisible"
+                class="btn btn-close-search p-0 d-md-none"
+                @click.stop="closeSearch"
+              >
+                <Icon icon="ph:caret-left" width="24px" />
+              </button>
 
-            <Icon icon="ph:magnifying-glass" class="search-icon" width="24px"/>
+              <Icon icon="ph:magnifying-glass" class="search-icon" width="24px"/>
 
-            <input
-              v-if="isSearchVisible"
-              v-model="searchQuery"
-              type="text"
-              placeholder="今天想看些什麼？"
-              class="search-input-field flex-grow-1"
-              @keyup.enter="handleSearch(searchQuery)"
-              ref="searchInput"
-            />
-            <span v-else class="search-placeholder-text">搜尋</span>
+              <input
+                v-if="isSearchVisible"
+                v-model="searchQuery"
+                type="text"
+                placeholder="今天想看些什麼？"
+                class="search-input-field flex-grow-1"
+                @keyup.enter="handleSearch(searchQuery)"
+                ref="searchInput"
+              />
+              <span v-else class="search-placeholder-text">搜尋</span>
 
-            <button
-              v-if="isSearchVisible"
-              class="btn btn-search-trigger p-0 ms-2"
-              @click.stop="handleSearch(searchQuery)"
-            >
-              搜尋
-            </button>
+              <button
+                v-if="isSearchVisible"
+                class="btn btn-search-trigger p-0 ms-2"
+                @click.stop="handleSearch(searchQuery)"
+              >
+                搜尋
+              </button>
+            </div>
           </div>
-        </div>
 
-        <Teleport to="body">
           <Transition name="fade-slide">
             <SearchOverlay
               v-if="isSearchVisible"
@@ -87,7 +87,7 @@ const closeSearch = () => {
               @search="handleSearch"
             />
           </Transition>
-        </Teleport>
+        </div>
 
         <div class="navbar-actions">
           <div class="nav-item-icon animate-entrance" style="animation-delay: 0.2s">
