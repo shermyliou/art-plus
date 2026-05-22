@@ -183,13 +183,13 @@ const formatDateRange = (start, end) => {
 <template>
   <div class="search-page-container d-flex position-relative">
     <!-- Left Sidebar: Filters -->
-    <FilterSidebar class="sidebar" @update:filters="handleFilterUpdate"></FilterSidebar>
+    <FilterSidebar class="d-none d-md-block" @update:filters="handleFilterUpdate"></FilterSidebar>
 
     <!-- Main Content Area -->
-    <div class="search-content flex-grow-1 d-flex flex-column px-4 overflow-y-auto g-3 container-md ms-0">
+    <div class="search-content flex-grow-1 d-flex flex-column h-100 px-4 overflow-y-auto g-3 container-md ms-0">
 
       <!-- Fixed Header Section -->
-      <div class="fixed-header-section w-100 d-flex flex-nowrap justify-content-between align-items-center sticky-top pt-4 pb-2">
+      <div class="fixed-header-section w-100 d-flex flex-nowrap justify-content-between align-items-center sticky-top pt-4 pb-3">
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
           aria-labelledby="offcanvasExampleLabel">
@@ -208,7 +208,7 @@ const formatDateRange = (start, end) => {
         </div>
 
         <!-- Nav Tabs Section -->
-        <ul class="nav nav-pills overflow-x-auto flex-shrink-1 nav-tabs-scroll">
+        <ul class="nav nav-pills overflow-x-auto flex-shrink-1 flex-nowrap nav-tabs-scroll">
           <li v-for="tab in tabs" :key="tab.name" class="nav-item">
             <a class="nav-link d-flex align-items-center justify-content-center gap-1"
               :class="{ active: activeTab === tab.name }" href="#" @click.prevent="activeTab = tab.name">
@@ -220,14 +220,14 @@ const formatDateRange = (start, end) => {
           </li>
         </ul>
         <!-- Filter/Sort Section -->
-        <button class="btn btn-outline-secondary flex-shrink-0 text-nowrap sidebar-toggle" type="button" data-bs-toggle="offcanvas"
+        <button class="btn btn-outline-secondary btn-lg flex-shrink-0 text-nowrap sidebar-toggle d-flex d-md-none align-items-center" type="button" data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
           <Icon icon="ph:funnel" width="1em" height="1em" />
           <!-- 篩選 -->
         </button>
         <div class="flex-shrink-0 d-flex justify-content-end">
           <div class="dropdown">
-            <button class="btn btn-outline-secondary bg-white btn-rect btn-sort-dropdown dropdown-toggle" type="button" id="sortDropdown"
+            <button class="btn btn-outline-secondary btn-lg bg-white btn-sort-dropdown dropdown-toggle" type="button" id="sortDropdown"
               data-bs-toggle="dropdown" aria-expanded="false">
               <div class="sort-header d-flex">
                 <div class="sort-title-area d-flex align-items-center">
@@ -271,8 +271,8 @@ const formatDateRange = (start, end) => {
 
     <!-- Calendar Overlay (Fixed to screen) -->
     <Transition name="fade">
-      <div v-if="showCalendar" class="calendar-overlay">
-        <div class="container-sm me-0">
+      <div v-if="showCalendar" class="calendar-overlay position-absolute start-0 end-0 px-4 pe-none">
+        <div class="container-sm me-0 pe-auto">
           <CalendarView @close="showCalendar = false" />
         </div>
       </div>
@@ -291,19 +291,16 @@ const formatDateRange = (start, end) => {
 
 <style scoped lang="scss">
 .sidebar-toggle {
-    display: none; 
-    --bs-btn-padding-x: .6875rem;
-  }
+  --component-padding-x-large: 1.125rem;
+}
 
 .fixed-header-section {
   gap: var(--main-gap-x);
   background-color: var(--background-default-default);
-  z-index: 1020;
 }
 
 .nav-tabs-scroll {
   min-width: 0; // allows flex child to shrink below its content size so overflow-x-auto kicks in
-  flex-wrap: nowrap;
 }
   
 @media (min-width: 769px) {
@@ -313,16 +310,6 @@ const formatDateRange = (start, end) => {
 }
 
 @media (max-width: 768px) {
-  .sidebar {
-    display: none;
-  }
-
-  .sidebar-toggle {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-  }
-
   .search-content {
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
@@ -345,7 +332,6 @@ const formatDateRange = (start, end) => {
 }
 
 .search-content {
-  height: 100%;
   gap: var(--main-gap-y-large);
 }
 
@@ -355,17 +341,8 @@ const formatDateRange = (start, end) => {
 }
 
 .calendar-overlay {
-  position: absolute;
   bottom: 32px;
-  left: 0;
-  right: 0;
   z-index: 1040;
-  padding: 0 24px;
-  pointer-events: none;
-
-  & > div {
-    pointer-events: auto;
-  }
 }
 
 .btn-calendar-fab {
@@ -423,7 +400,3 @@ const formatDateRange = (start, end) => {
   }
 }
 </style>
-
-.dropdown-toggle {
-  --bs-btn-padding-x: .6875rem;
-}

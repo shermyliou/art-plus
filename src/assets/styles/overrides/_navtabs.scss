@@ -2,8 +2,8 @@
   background-color: var(--background-default-tertiary);
   border: 1px solid var(--border-default-default);
   border-radius: var(--border-radius-pill);
-  padding: 2px;
-  height: calc(var(--component-height-normal) - 2px);
+  padding: .25em;
+  height: var(--component-height-large);
   flex-wrap: nowrap;
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@
     padding-top: 0.1em; //針對中文高度調整
 
     width: 100%;
-    padding: 0 var(--component-padding-x-small);
+    padding: var(--component-padding-x-normal) var(--component-padding-x-normal);
     border-radius: var(--border-radius-pill);
     color: var(--text-default-default);
     white-space: nowrap;
@@ -46,11 +46,12 @@
 
     &.active {
       background-color: var(--background-brand-hover);
+      border: 1px solid var(--border-brand-secondary);
       color: var(--text-brand-on-brand);
       font-weight: 700;
       letter-spacing: 0.32px;
       height: 100%;
-    border-radius: var(--border-radius-pill);
+      border-radius: var(--border-radius-pill);
     }
   }
 }

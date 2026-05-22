@@ -131,13 +131,13 @@ const getEventsForDay = (date) => {
     <!-- Header -->
     <div class="calendar-header mb-4">
       <div class="row align-items-center">
-        <div class="col-4">
+        <div class="col-md-4 col-12">
           <h2 class="calendar-title m-0">收藏行事曆</h2>
         </div>
-        <div class="col-4 text-center">
+        <div class="col-3 col-md-4 text-center">
           <span class="month-display">{{ displayMonth }}</span>
         </div>
-        <div class="col-4 d-flex justify-content-end gap-2 align-items-center">
+        <div class="col-9 col-md-4 d-flex justify-content-end gap-2 align-items-center">
           <button class="btn btn-outline-secondary btn-nav-circle" @click="prevWeek" aria-label="上周">
             <Icon icon="ph:caret-left" width="20" height="20" />
           </button>
