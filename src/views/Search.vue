@@ -24,16 +24,6 @@ const toggleCalendar = () => {
   showCalendar.value = !showCalendar.value;
 };
 
-const tabs = computed(() => [
-  { name: "全部", badgeCount: eventStore.events.length },
-  { name: "藝文展覽", badgeCount: eventStore.events.filter(e => e.majorCategory === '藝文展覽').length },
-  { name: "藝文演出", badgeCount: eventStore.events.filter(e => e.majorCategory === '藝文演出').length },
-  { name: "藝文體驗", badgeCount: eventStore.events.filter(e => e.majorCategory === '藝文體驗').length },
-  { name: "藝文講座", badgeCount: eventStore.events.filter(e => e.majorCategory === '藝文講座').length },
-  { name: "藝文小旅遊", badgeCount: eventStore.events.filter(e => e.majorCategory === '藝文小旅遊').length },
-  { name: "線上展覽", badgeCount: eventStore.events.filter(e => e.majorCategory === '線上展覽').length },
-]);
-
 const activeTab = ref("全部");
 const sidebarFilters = ref(null);
 
@@ -41,24 +31,17 @@ const handleFilterUpdate = (filters) => {
   sidebarFilters.value = filters;
 };
 
-const filteredEvents = computed(() => {
+// 僅套用搜尋關鍵字與側邊欄篩選，不套用頁籤分類，供頁籤徽章計數使用
+const searchFilteredEvents = computed(() => {
   let results = eventStore.events;
 
-  // 1. Top Tab Filter (Major Category)
-  if (activeTab.value !== '全部') {
-    results = results.filter(e => e.majorCategory === activeTab.value);
-  }
-
-  // 2. Search Query Filter
   if (searchQuery.value) {
     results = results.filter(e => e.title.includes(searchQuery.value));
   }
 
-  // 3. Sidebar Filters
   if (sidebarFilters.value) {
-    const { dateRange, cities, categories, excludeTickets, features } = sidebarFilters.value;
+    const { dateRange, cities, categories, excludeTickets } = sidebarFilters.value;
 
-    // Date Range Filter
     if (dateRange.start && dateRange.end) {
       results = results.filter(e => {
         const eStart = new Date(e.startDate);
@@ -66,72 +49,75 @@ const filteredEvents = computed(() => {
         return eStart <= dateRange.end && eEnd >= dateRange.start;
       });
     } else if (dateRange.start) {
-      // Only start date selected (selecting range in progress)
-      results = results.filter(e => {
-        const eEnd = new Date(e.endDate);
-        return eEnd >= dateRange.start;
-      });
+      results = results.filter(e => new Date(e.endDate) >= dateRange.start);
     }
 
-    // City Filter
     if (cities && !cities.includes('全部')) {
       results = results.filter(e => {
-        // e.city might be "臺北市、新北市"
         const eventCities = e.city.split('、');
         return eventCities.some(c => cities.includes(c));
       });
     }
 
-    // Category Filters (Sub-categories from Sidebar)
     const { exhibition, traditional, drama, dance, music } = categories;
     const hasCategoryFilter = [exhibition, traditional, drama, dance, music].some(arr => arr.length > 0);
 
     if (hasCategoryFilter) {
       results = results.filter(e => {
-        // 展覽類型 (藝文展覽)
         if (exhibition.length > 0 && e.majorCategory === '藝文展覽') {
           if (exhibition.includes('全部')) return true;
           return exhibition.includes(e.category);
         }
-
-        // 藝文演出系列
         if (e.majorCategory === '藝文演出') {
-          // 傳統表演藝術
           if (traditional.length > 0 && (e.category === '傳統藝術' || e.category === '戲曲' || traditional.includes(e.category))) {
             if (traditional.includes('全部')) return true;
             return traditional.includes(e.category);
           }
-          // 戲劇
           if (drama.length > 0 && (e.category === '戲劇' || drama.includes(e.category))) {
             if (drama.includes('全部')) return true;
             return drama.includes(e.category);
           }
-          // 舞蹈
           if (dance.length > 0 && (e.category === '舞蹈' || dance.includes(e.category))) {
             if (dance.includes('全部')) return true;
             return dance.includes(e.category);
           }
-          // 音樂
           if (music.length > 0 && (e.category === '音樂' || music.includes(e.category))) {
             if (music.includes('全部')) return true;
             return music.includes(e.category);
           }
         }
-
         return false;
       });
     }
-    
-    // Exclude Ticket Status
-    if (excludeTickets.length > 0) {
-      if (excludeTickets.includes('排除已售完')) {
-        results = results.filter(e => e.ticketStatus !== '已售完');
-      }
-      // Note: Student and Accessibility ticket exclusion would require more data in events.json
+
+    if (excludeTickets.length > 0 && excludeTickets.includes('排除已售完')) {
+      results = results.filter(e => e.ticketStatus !== '已售完');
     }
   }
 
-  // 4. Sorting
+  return results;
+});
+
+const tabs = computed(() => [
+  { name: "全部", badgeCount: searchFilteredEvents.value.length },
+  { name: "藝文展覽", badgeCount: searchFilteredEvents.value.filter(e => e.majorCategory === '藝文展覽').length },
+  { name: "藝文演出", badgeCount: searchFilteredEvents.value.filter(e => e.majorCategory === '藝文演出').length },
+  { name: "藝文體驗", badgeCount: searchFilteredEvents.value.filter(e => e.majorCategory === '藝文體驗').length },
+  { name: "藝文講座", badgeCount: searchFilteredEvents.value.filter(e => e.majorCategory === '藝文講座').length },
+  { name: "藝文小旅遊", badgeCount: searchFilteredEvents.value.filter(e => e.majorCategory === '藝文小旅遊').length },
+  { name: "線上展覽", badgeCount: searchFilteredEvents.value.filter(e => e.majorCategory === '線上展覽').length },
+]);
+
+const filteredEvents = computed(() => {
+  // 1. 以搜尋／側邊欄已篩選的結果為基礎
+  let results = searchFilteredEvents.value;
+
+  // 2. Top Tab Filter (Major Category)
+  if (activeTab.value !== '全部') {
+    results = results.filter(e => e.majorCategory === activeTab.value);
+  }
+
+  // 3. Sorting
   const sorted = [...results];
   if (currentSort.value === '日期：近到遠') {
     sorted.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
