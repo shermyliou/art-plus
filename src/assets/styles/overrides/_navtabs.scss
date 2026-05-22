@@ -3,7 +3,7 @@
   border: 1px solid var(--border-default-default);
   border-radius: var(--border-radius-pill);
   padding: .25em;
-  height: var(--component-height-large);
+  height: var(--size-component-lg);
   flex-wrap: nowrap;
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@
     padding-top: 0.1em; //針對中文高度調整
 
     width: 100%;
-    padding: var(--component-padding-x-normal) var(--component-padding-x-normal);
+    padding: var(--spacing-component-l) var(--spacing-component-l);
     border-radius: var(--border-radius-pill);
     color: var(--text-default-default);
     white-space: nowrap;

@@ -54,7 +54,7 @@ const emit = defineEmits(['buy'])
 .booking-card {
   background-color: #fff; // 基礎設定為純白背景
   border: 1px solid #eee; // 基礎設定為較淺的邊框
-  border-radius: $border-radius-2;
+  border-radius: $border-radius-md;
   padding: 12px 24px;
   width: 100%;
   display: flex;

@@ -1,5 +1,5 @@
 .btn {
-  height: var(--component-height-normal);
+  height: var(--size-component-md);
   font-size: 1rem;
   text-indent: 0.12em;
   display: inline-flex;
@@ -7,7 +7,7 @@
   justify-content: center;
   font-weight: $btn-font-weight;
   letter-spacing: $btn-letter-spacing;
-  gap: var(--component-gap-x-small);
+  gap: var(--spacing-component-xs);
 
   .btn-check:checked + & {
   background-color: $background-brand-default;
@@ -41,7 +41,7 @@
 
 
 .btn-rect {
-  border-radius: #{$border-radius-1} !important;
+  border-radius: var(--border-radius-sm) !important;
 }
 
 // 3. 線框按鈕 (Secondary)
@@ -94,13 +94,13 @@
 }
 
 .btn-lg {
-    height: var(--component-height-large);
-    padding-left: var(--component-padding-x-large);
-    padding-right: var(--component-padding-x-large);
+    height: var(--size-component-lg);
+    padding-left: var(--spacing-component-xl);
+    padding-right: var(--spacing-component-xl);
 }
 
 .btn-sm {
-    height: var(--component-height-small);
+    height: var(--size-component-sm);
     --bs-btn-padding-x: 1.5em;
 }
 

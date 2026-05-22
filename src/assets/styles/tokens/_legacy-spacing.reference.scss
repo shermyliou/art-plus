@@ -1,0 +1,68 @@
+// ⚠️ 僅供參考（REFERENCE ONLY）─────────────────────────────────
+// 這是「舊版」間距／尺寸／圓角 token 的存檔快照，於導入 Figma 新間距
+// 系統之前複製自 tokens/_semantic.scss。此檔案「不會」被 main.scss 匯入，
+// 也不應被任何元件引用，僅作為新舊命名對照的歷史紀錄。
+// ───────────────────────────────────────────────────────────
+
+// 尺寸
+$icon-size-extra-small: 20px;
+$icon-size-small: 24px;
+$icon-size-medium: 32px;
+$icon-size-large: 40px;
+
+$component-height-small: 2em;         // 32px
+$component-height-normal: 2.5em;      // 40px
+$component-height-large: 3.375em;     // 54px
+
+$component-padding-x-small: 0.5em;    // 8px
+$component-padding-x-normal: 1em;     // 16px
+$component-padding-x-large: 1.75em;   // 28px
+$component-padding-y-small: 0.5em;    // 8px
+$component-padding-y-normal: 1em;     // 16px
+
+$component-gap-x-small: 0.25rem;      // 4px
+$component-gap-x-normal: 0.75rem;     // 12px
+$component-gap-x-large: 2.5rem;       // 40px
+$component-gap-y-small: 0.25rem;      // 4px
+$component-gap-y-normal: 0.75rem;     // 12px
+$component-gap-y-large: 2.5rem;       // 40px
+
+$component-card-min-width: 224px;
+$component-card-max-width: 320px;
+
+$border-radius-0: 4px;
+$border-radius-1: 8px;
+$border-radius-2: 16px;
+$border-radius-3: 24px;
+$border-radius-4: 48px;
+$border-radius-5: 64px;
+$border-radius-pill: 1000px;
+
+$aside-left-min-width: 120px;
+$aside-left-max-width: 240px;
+$aside-right-min-width: 160px;
+$aside-right-max-width: 320px;
+$aside-padding-x: 8px;
+
+$main-padding-x: 24px;
+$main-padding-y: 16px;
+$main-gap-x: 0.75rem;                 // 12px
+$main-gap-x-large: 1.5rem;            // 24px
+$main-gap-y: 0.75rem;                 // 12px
+$main-gap-y-large: 1.5rem;            // 24px
+$main-event-width: 960px;
+$main-article-width: 760px;
+$main-article-text-width: 580px;
+
+$page-width: 1440px;
+$page-min-width: 1280px;
+$page-max-width: 1920px;
+$main-container-max-width: $page-min-width;
+$page-height: 900px;
+$component-navbar-height: 72px;
+$page-padding-top: $component-navbar-height;
+$page-padding-bottom: 16px;
+
+$home-padding-x: 60px;
+$home-padding-y: 80px;
+$slide-padding: 24px;

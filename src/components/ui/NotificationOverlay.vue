@@ -141,7 +141,7 @@ onUnmounted(() => {
 .notification-card {
   background-color: var(--background-default-default);
   border: 1px solid var(--border-default-default);
-  border-radius: var(--border-radius-3);
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
 }
 

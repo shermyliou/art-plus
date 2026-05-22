@@ -295,7 +295,7 @@ const formatDateRange = (start, end) => {
 }
 
 .fixed-header-section {
-  gap: var(--main-gap-x);
+  gap: var(--spacing-component-m);
   background-color: var(--background-default-default);
 }
 
@@ -327,16 +327,16 @@ const formatDateRange = (start, end) => {
   }
 
 .search-page-container {
-  height: calc(100dvh - var(--component-navbar-height)); // dvh accounts for mobile browser dynamic toolbars
+  height: calc(100dvh - var(--size-component-navbar-height)); // dvh accounts for mobile browser dynamic toolbars
   overflow: hidden;
 }
 
 .search-content {
-  gap: var(--main-gap-y-large);
+  gap: var(--spacing-group-xs);
 }
 
 .results-scroll-area {
-  gap: var(--main-gap-x);
+  gap: var(--spacing-component-m);
   padding-bottom: 80px; // Space for the FAB
 }
 
@@ -395,7 +395,7 @@ const formatDateRange = (start, end) => {
 
 #offcanvasExample {
   &.show {
-    padding-top: var(--component-navbar-height);
+    padding-top: var(--size-component-navbar-height);
     width: auto;
   }
 }

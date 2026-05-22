@@ -132,7 +132,7 @@ const handleNavClick = (path) => {
 
   .nav-link {
     color: var(--text-brand-default);
-    border-radius: var(--border-radius-1);
+    border-radius: var(--border-radius-sm);
     transition: all 0.2s ease;
     height: 48px;
     border: none !important; // 徹底去掉所有邊框

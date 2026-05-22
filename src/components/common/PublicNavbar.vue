@@ -131,7 +131,7 @@ const closeSearch = () => {
 <style scoped lang="scss">
 .custom-navbar {
   background-color: var(--background-brand-secondary);
-  height: var(--component-navbar-height);
+  height: var(--size-component-navbar-height);
   border-bottom: 1px solid #eeeeee;
   padding: 0 60px !important;
   z-index: 2000;
@@ -193,7 +193,7 @@ const closeSearch = () => {
       top: 0;
       left: 0;
       width: 100vw;
-      height: var(--component-navbar-height);
+      height: var(--size-component-navbar-height);
       border-radius: 0;
       z-index: 2100;
       padding: 0 20px;

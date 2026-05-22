@@ -111,7 +111,7 @@ onUnmounted(() => {
 
   @media (max-width: 768px) {
     position: fixed;
-    top: var(--component-navbar-height);
+    top: var(--size-component-navbar-height);
     left: 0;
     right: 0;
     width: 100vw;
@@ -121,7 +121,7 @@ onUnmounted(() => {
 
 .search-expanded-bar {
   background-color: var(--background-brand-secondary);
-  border-radius: var(--border-radius-3);
+  border-radius: var(--border-radius-lg);
   padding: 8px;
   width: 100%;
 }
@@ -171,7 +171,7 @@ onUnmounted(() => {
 
 .search-dropdown-content {
   background-color: var(--background-default-default);
-  border-radius: var(--border-radius-1);
+  border-radius: var(--border-radius-sm);
   @media (max-width: 768px) {
     border-radius: 0;
   }

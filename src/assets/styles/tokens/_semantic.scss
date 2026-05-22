@@ -112,67 +112,73 @@ $icon-danger-on-danger-tertiary: $red-700;
 $icon-disabled-default: $gray-400;
 $icon-disabled-on-disabled: $gray-0;
 
-// 尺寸
+// 圖示尺寸
 $icon-size-extra-small: 20px;
 $icon-size-small: 24px;
 $icon-size-medium: 32px;
 $icon-size-large: 40px;
 
-$component-height-small: 2em;         // 32px
-$component-height-normal: 2.5em;      // 40px
-$component-height-large: 3.375em;     // 54px
+// ─── 間距 Spacing ─────────────────────────────────────────────
+// 元件內部間距（padding / gap）
+$spacing-component-xxs: 2px;
+$spacing-component-xs: 4px;
+$spacing-component-s: 8px;
+$spacing-component-m: 12px;
+$spacing-component-l: 16px;
+$spacing-component-xl: 28px;
+$spacing-component-xxl: 40px;
 
-$component-padding-x-small: 0.5em;    // 8px
-$component-padding-x-normal: 1em;     // 16px
-$component-padding-x-large: 1.75em;   // 28px
-$component-padding-y-small: 0.5em;    // 8px
-$component-padding-y-normal: 1em;     // 16px
+// 群組／區塊間距
+$spacing-group-xxs: 16px;
+$spacing-group-xs: 24px;
+$spacing-group-s: 32px;
+$spacing-group-m: 40px;
+$spacing-group-l: 48px;
+$spacing-group-xl: 60px;
+$spacing-group-xxl: 64px;
+$spacing-group-3xl: 80px;
 
-$component-gap-x-small: 0.25rem;      // 4px
-$component-gap-x-normal: 0.75rem;     // 12px
-$component-gap-x-large: 2.5rem;       // 40px
-$component-gap-y-small: 0.25rem;      // 4px
-$component-gap-y-normal: 0.75rem;     // 12px
-$component-gap-y-large: 2.5rem;       // 40px
-
-$component-card-min-width: 224px;
-$component-card-max-width: 320px;
-
-$border-radius-0: 4px;
-$border-radius-1: 8px;
-$border-radius-2: 16px;
-$border-radius-3: 24px;
-$border-radius-4: 48px;
-$border-radius-5: 64px;
+// ─── 圓角 Border Radius ───────────────────────────────────────
+$border-radius-xs: 4px;
+$border-radius-sm: 8px;
+$border-radius-md: 16px;
+$border-radius-lg: 24px;
+$border-radius-xl: 32px;
+$border-radius-xxl: 48px;
 $border-radius-pill: 1000px;
 
-$aside-left-min-width: 120px;
-$aside-left-max-width: 240px;
-$aside-right-min-width: 160px;
-$aside-right-max-width: 320px;
-$aside-padding-x: 8px;
+// ─── 尺寸 Size ────────────────────────────────────────────────
+// 元件尺寸
+$size-component-sm: 32px;
+$size-component-md: 40px;
+$size-component-lg: 56px;
+$size-component-card-min-width: 224px;
+$size-component-card-max-width: 320px;
+$size-component-navbar-height: 72px;
 
-$main-padding-x: 24px;
-$main-padding-y: 16px;
-$main-gap-x: 0.75rem;                 // 12px
-$main-gap-x-large: 1.5rem;            // 24px
-$main-gap-y: 0.75rem;                 // 12px
-$main-gap-y-large: 1.5rem;            // 24px
-$main-event-width: 960px;
-$main-article-width: 760px;
-$main-article-text-width: 580px;
+// 側欄尺寸
+$size-aside-left-min-width: 120px;
+$size-aside-left-max-width: 240px;
+$size-aside-right-min-width: 160px;
+$size-aside-right-max-width: 320px;
 
-$page-width: 1440px;
-$page-min-width: 1280px;
-$page-max-width: 1920px;
-$main-container-max-width: $page-min-width;
-$page-height: 900px;
-$component-navbar-height: 72px;
-$page-padding-top: $component-navbar-height;
-$page-padding-bottom: 16px;
+// 頁面尺寸
+$size-page-min-width: 1280px;
+$size-page-max-width: 1920px;
+$size-page-height: 900px;
+$size-page-container-max-width: $size-page-min-width;
+$size-page-event-width: 960px;
+$size-page-article: 760px;
+$size-page-article-text: 580px;
+$size-responsive-device-width: 1440px;
 
-$home-padding-x: 60px;
-$home-padding-y: 80px;
+// ─── 頁面間距 Page spacing ────────────────────────────────────
+$spacing-page-top: $size-component-navbar-height;
+$spacing-page-bottom: 16px;
+$spacing-page-x: 24px;
+$spacing-page-y: 32px;
+
+// 投影片
 $slide-padding: 24px;
 
 // ─── CSS Variables Output (:root) ─────────────────────────────
@@ -303,65 +309,68 @@ $slide-padding: 24px;
   --icon-size-medium: #{$icon-size-medium};
   --icon-size-large: #{$icon-size-large};
 
-  // Component Size
-  --component-height-small: #{$component-height-small};
-  --component-height-normal: #{$component-height-normal};
-  --component-height-large: #{$component-height-large};
-  --component-padding-x-small: #{$component-padding-x-small};
-  --component-padding-x-normal: #{$component-padding-x-normal};
-  --component-padding-x-large: #{$component-padding-x-large};
-  --component-padding-y-small: #{$component-padding-y-small};
-  --component-padding-y-normal: #{$component-padding-y-normal};
-  --component-gap-x-small: #{$component-gap-x-small};
-  --component-gap-x-normal: #{$component-gap-x-normal};
-  --component-gap-x-large: #{$component-gap-x-large};
-  --component-gap-y-small: #{$component-gap-y-small};
-  --component-gap-y-normal: #{$component-gap-y-normal};
-  --component-gap-y-large: #{$component-gap-y-large};
-  --component-card-min-width: #{$component-card-min-width};
-  --component-card-max-width: #{$component-card-max-width};
-  --component-navbar-height: #{$component-navbar-height};
+  // 間距 Spacing — 元件
+  --spacing-component-xxs: #{$spacing-component-xxs};
+  --spacing-component-xs: #{$spacing-component-xs};
+  --spacing-component-s: #{$spacing-component-s};
+  --spacing-component-m: #{$spacing-component-m};
+  --spacing-component-l: #{$spacing-component-l};
+  --spacing-component-xl: #{$spacing-component-xl};
+  --spacing-component-xxl: #{$spacing-component-xxl};
 
-  @media (max-width: 768px) {
-    --component-navbar-height: 52px;
-  }
+  // 間距 Spacing — 群組
+  --spacing-group-xxs: #{$spacing-group-xxs};
+  --spacing-group-xs: #{$spacing-group-xs};
+  --spacing-group-s: #{$spacing-group-s};
+  --spacing-group-m: #{$spacing-group-m};
+  --spacing-group-l: #{$spacing-group-l};
+  --spacing-group-xl: #{$spacing-group-xl};
+  --spacing-group-xxl: #{$spacing-group-xxl};
+  --spacing-group-3xl: #{$spacing-group-3xl};
 
-  // Border Radius
-  --border-radius-0: #{$border-radius-0};
-  --border-radius-1: #{$border-radius-1};
-  --border-radius-2: #{$border-radius-2};
-  --border-radius-3: #{$border-radius-3};
-  --border-radius-4: #{$border-radius-4};
-  --border-radius-5: #{$border-radius-5};
+  // 間距 Spacing — 頁面
+  --spacing-page-top: #{$spacing-page-top};
+  --spacing-page-bottom: #{$spacing-page-bottom};
+  --spacing-page-x: #{$spacing-page-x};
+  --spacing-page-y: #{$spacing-page-y};
+
+  // 圓角 Border Radius
+  --border-radius-xs: #{$border-radius-xs};
+  --border-radius-sm: #{$border-radius-sm};
+  --border-radius-md: #{$border-radius-md};
+  --border-radius-lg: #{$border-radius-lg};
+  --border-radius-xl: #{$border-radius-xl};
+  --border-radius-xxl: #{$border-radius-xxl};
   --border-radius-pill: #{$border-radius-pill};
 
-  // Layout
-  --aside-left-min-width: #{$aside-left-min-width};
-  --aside-left-max-width: #{$aside-left-max-width};
-  --aside-right-min-width: #{$aside-right-min-width};
-  --aside-right-max-width: #{$aside-right-max-width};
-  --aside-padding-x: #{$aside-padding-x};
-  --main-padding-x: #{$main-padding-x};
-  --main-padding-y: #{$main-padding-y};
-  --main-gap-x: #{$main-gap-x};
-  --main-gap-x-large: #{$main-gap-x-large};
-  --main-gap-y: #{$main-gap-y};
-  --main-gap-y-large: #{$main-gap-y-large};
-  --main-container-max-width: #{$main-container-max-width};
-  --main-event-width: #{$main-event-width};
-  --main-article-width: #{$main-article-width};
-  --main-article-text-width: #{$main-article-text-width};
+  // 尺寸 Size — 元件
+  --size-component-sm: #{$size-component-sm};
+  --size-component-md: #{$size-component-md};
+  --size-component-lg: #{$size-component-lg};
+  --size-component-card-min-width: #{$size-component-card-min-width};
+  --size-component-card-max-width: #{$size-component-card-max-width};
+  --size-component-navbar-height: #{$size-component-navbar-height};
 
-  // Page
-  --page-width: #{$page-width};
-  --page-min-width: #{$page-min-width};
-  --page-max-width: #{$page-max-width};
-  --page-height: #{$page-height};
-  --page-padding-top: #{$page-padding-top};
-  --page-padding-bottom: #{$page-padding-bottom};
+  @media (max-width: 768px) {
+    --size-component-navbar-height: 52px;
+  }
 
-  // Home
-  --home-padding-x: #{$home-padding-x};
-  --home-padding-y: #{$home-padding-y};
+  // 尺寸 Size — 側欄
+  --size-aside-left-min-width: #{$size-aside-left-min-width};
+  --size-aside-left-max-width: #{$size-aside-left-max-width};
+  --size-aside-right-min-width: #{$size-aside-right-min-width};
+  --size-aside-right-max-width: #{$size-aside-right-max-width};
+
+  // 尺寸 Size — 頁面
+  --size-page-min-width: #{$size-page-min-width};
+  --size-page-max-width: #{$size-page-max-width};
+  --size-page-height: #{$size-page-height};
+  --size-page-container-max-width: #{$size-page-container-max-width};
+  --size-page-event-width: #{$size-page-event-width};
+  --size-page-article: #{$size-page-article};
+  --size-page-article-text: #{$size-page-article-text};
+  --size-responsive-device-width: #{$size-responsive-device-width};
+
+  // 投影片
   --slide-padding: #{$slide-padding};
 }

@@ -76,7 +76,7 @@ const handleAvatarError = (event) => {
 .review-card {
   background-color: var(--gray-0);
   border: 1px solid var(--border-default-default);
-  border-radius: var(--border-radius-2);
+  border-radius: var(--border-radius-md);
   padding: 16px 32px;
   width: 100%;
   display: flex;

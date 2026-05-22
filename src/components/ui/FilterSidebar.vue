@@ -473,10 +473,10 @@ collectFilters();
 
 .filter-sidebar {
   width: 100%;
-  max-width: var(--aside-left-max-width);
-  padding: var(--aside-padding-x) var(--main-padding-y);
+  max-width: var(--size-aside-left-max-width);
+  padding: var(--spacing-component-s) var(--spacing-component-l);
   padding-bottom: 16px;
-  top: var(--component-navbar-height);
+  top: var(--size-component-navbar-height);
   background-color: var(--background-default-default);
 }
 
@@ -527,7 +527,7 @@ collectFilters();
 
   .option-item {
     padding: 4px 8px;
-    border-radius: var(--border-radius-1);
+    border-radius: var(--border-radius-sm);
     min-height: 32px;
 
     .check-icon-wrapper {

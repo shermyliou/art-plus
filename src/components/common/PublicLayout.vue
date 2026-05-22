@@ -15,6 +15,6 @@ import FloatingNavTabs from '@/components/ui/FloatingNavTabs.vue';
 
 <style scoped lang="scss">
 .page-top-offset {
-  padding-top: var(--component-navbar-height);
+  padding-top: var(--size-component-navbar-height);
 }
 </style>

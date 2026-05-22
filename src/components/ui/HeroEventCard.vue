@@ -121,7 +121,7 @@ const handleAvatarError = (event) => {
   gap: 32px;
   align-items: stretch;
   background: var(--background-default-default);
-  border-radius: var(--border-radius-2);
+  border-radius: var(--border-radius-md);
   overflow: hidden;
   padding: 16px 56px;
   width: 100%;
@@ -152,7 +152,7 @@ const handleAvatarError = (event) => {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: var(--component-padding-y-normal) var(--component-padding-x-normal);
+    padding: var(--spacing-component-l) var(--spacing-component-l);
     justify-content: space-between;
   }
 
@@ -225,7 +225,7 @@ const handleAvatarError = (event) => {
     width: 100%;
     height: auto;
     padding: 16px 24px;
-    gap: var(--component-gap-x-normal);
+    gap: var(--spacing-component-m);
     justify-content: center;
     font-weight: 700;
     font-size: 14px;

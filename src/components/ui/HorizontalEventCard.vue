@@ -114,10 +114,10 @@ const handleFavoriteClick = () => {
 .horizontal-event-card {
   display: flex;
   gap: 16px;
-  padding: var(--component-padding-y-normal) var(--component-padding-x-normal);
+  padding: var(--spacing-component-l) var(--spacing-component-l);
   background: var(--background-default-default);
   border: 1px solid var(--border-default-default);
-  border-radius: var(--border-radius-1);
+  border-radius: var(--border-radius-sm);
   width: 100%;
   position: relative;
   box-sizing: border-box;
@@ -126,7 +126,7 @@ const handleFavoriteClick = () => {
     flex-shrink: 0;
     width: 114px;
     height: 152px;
-    border-radius: var(--border-radius-1);
+    border-radius: var(--border-radius-sm);
     overflow: hidden;
 
     @media (max-width: 319px) {
@@ -145,7 +145,7 @@ const handleFavoriteClick = () => {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--component-gap-y-small);
+    gap: var(--spacing-component-xs);
     min-width: 0; // Needed for text truncation in flex children
   }
 

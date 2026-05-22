@@ -37,9 +37,9 @@ defineProps({
 
 <style scoped>
 .event-card {
-  min-width: var(--component-card-min-width);
-  max-width: var(--component-card-max-width);
-  border-radius: var(--border-radius-2);
+  min-width: var(--size-component-card-min-width);
+  max-width: var(--size-component-card-max-width);
+  border-radius: var(--border-radius-md);
   overflow: hidden;
   background: var(--background-default-default);
   border: 1px solid var(--border-default-default);
@@ -69,15 +69,15 @@ defineProps({
   background: var(--background-brand-default);
   color: var(--text-brand-on-brand);
   font-size: 0.75rem;
-  padding: var(--component-padding-y-small) var(--component-padding-x-small);
+  padding: var(--spacing-component-s) var(--spacing-component-s);
   border-radius: var(--border-radius-pill);
 }
 
 .event-card__body {
-  padding: var(--component-padding-y-normal) var(--component-padding-x-normal);
+  padding: var(--spacing-component-l) var(--spacing-component-l);
   display: flex;
   flex-direction: column;
-  gap: var(--component-gap-y-small);
+  gap: var(--spacing-component-xs);
 }
 
 .event-card__title {
@@ -93,13 +93,13 @@ defineProps({
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--component-gap-y-small);
+  gap: var(--spacing-component-xs);
 }
 
 .event-card__meta-item {
   display: flex;
   align-items: center;
-  gap: var(--component-gap-x-small);
+  gap: var(--spacing-component-xs);
   font-size: 0.875rem;
   color: var(--text-default-secondary);
 }
