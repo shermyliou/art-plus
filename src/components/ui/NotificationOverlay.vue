@@ -87,7 +87,7 @@ onUnmounted(() => {
 
 <template>
   <div class="notification-overlay-container" ref="overlayRef">
-    <div class="notification-card shadow">
+    <div class="notification-card shadow border rounded-2">
       <div class="notification-header d-flex justify-content-between align-items-center px-4 py-3">
         <h3 class="m-0 title">通知</h3>
         <button class="btn-text-read p-0" @click="markAllAsRead">全部已讀</button>
@@ -127,7 +127,7 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .notification-overlay-container {
   position: absolute;
-  top: 40px;
+  top: calc(100% + 20px);
   right: 0;
   width: 480px;
   z-index: 1050;
@@ -140,8 +140,6 @@ onUnmounted(() => {
 
 .notification-card {
   background-color: var(--background-default-default);
-  border: 1px solid var(--border-default-default);
-  border-radius: var(--border-radius-lg);
   overflow: hidden;
 }
 

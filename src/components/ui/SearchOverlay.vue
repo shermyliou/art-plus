@@ -60,7 +60,7 @@ onUnmounted(() => {
 <template>
   <div class="search-overlay-container" ref="overlayRef">
     <!-- Dropdown Content -->
-    <div class="search-dropdown-content p-3 shadow">
+    <div class="search-dropdown-content p-3 shadow border">
       <!-- Suggested Events -->
       <div class="search-section mb-3">
         <div class="section-title mb-2">建議活動</div>
@@ -102,7 +102,7 @@ onUnmounted(() => {
 .search-overlay-container {
   // 以搜尋列為錨點定位，寬度與左右緣自動對齊，無需硬編碼數值
   position: absolute;
-  top: calc(100% + 20px);
+  top: calc(100% - 4px);
   left: 0;
   right: 0;
   z-index: 2050;
@@ -174,6 +174,7 @@ onUnmounted(() => {
   border-radius: var(--border-radius-sm);
   @media (max-width: 768px) {
     border-radius: 0;
+    border: none;
   }
 }
 

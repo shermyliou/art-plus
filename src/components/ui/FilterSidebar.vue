@@ -345,7 +345,7 @@ collectFilters();
 </script>
 
 <template>
-  <aside class="filter-sidebar h-100 overflow-y-auto">
+  <aside class="filter-sidebar h-100 overflow-y-auto pt-3">
     <div v-for="(filter, index) in filters" :key="filter.label" class="filter-group">
       <div v-if="index > 0" class="filter-divider mx-3"></div>
       <button 

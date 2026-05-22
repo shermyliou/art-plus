@@ -61,7 +61,7 @@ onUnmounted(() => {
 
 <template>
   <div class="user-overlay-container" ref="overlayRef">
-    <div class="user-card p-2 shadow">
+    <div class="user-card p-2 shadow border rounded-2">
       <!-- Account List -->
       <div class="account-list mb-3">
         <div 
@@ -93,7 +93,7 @@ onUnmounted(() => {
       <div class="actions-row d-flex align-items-center justify-content-center">
         <button v-if="!userStore.isLoggedIn" class="btn btn-primary rounded-pill text-nowrap">登入</button>
         <button v-if="!userStore.isLoggedIn" class="btn btn-text text-nowrap">註冊</button>
-        <button v-else class="btn btn-outline-secondary rounded-pill text-nowrap w-100" @click="userStore.logout()">登出</button>
+        <button v-else class="btn btn-outline-secondary btn-rect text-nowrap w-100" @click="userStore.logout()">登出</button>
       </div>
     </div>
   </div>
@@ -102,20 +102,18 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .user-overlay-container {
   position: absolute;
-  top: 48px;
+  top: calc(100% + 20px);
   right: 0;
   z-index: 1050;
 }
 
 .user-card {
   background-color: var(--background-default-default);
-  border: 1px solid var(--border-default-default);
-  border-radius: var(--border-radius-lg);
 }
 
 .user-row {
   cursor: pointer;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
   transition: background-color 0.2s;
   
   &:hover {
@@ -152,19 +150,5 @@ onUnmounted(() => {
   font-size: 14px;
   color: #8e8e93;
   line-height: 1.4;
-}
-
-.btn-login {
-  background-color: #211f1e;
-  color: #f5f5f5;
-  border: none;
-  font-weight: bold;
-  letter-spacing: 1.92px;
-  height: 48px;
-  
-  &:hover {
-    background-color: #333;
-    color: white;
-  }
 }
 </style>

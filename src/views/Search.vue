@@ -227,7 +227,7 @@ const formatDateRange = (start, end) => {
         </button>
         <div class="flex-shrink-0 d-flex justify-content-end">
           <div class="dropdown">
-            <button class="btn btn-outline-secondary btn-lg bg-white btn-sort-dropdown dropdown-toggle" type="button" id="sortDropdown"
+            <button class="btn btn-outline-secondary btn-lg btn-sort-dropdown dropdown-toggle" type="button" id="sortDropdown"
               data-bs-toggle="dropdown" aria-expanded="false">
               <div class="sort-header d-flex">
                 <div class="sort-title-area d-flex align-items-center">
@@ -391,6 +391,16 @@ const formatDateRange = (start, end) => {
 
 .sort-text {
   translate: 0 0.1em;
+}
+
+// 讓排序選單項目的 hover / active 與一般 btn-outline-secondary 一致
+.sort-dropdown-menu .dropdown-item {
+  &:hover,
+  &:focus,
+  &.active {
+    background-color: var(--background-brand-default);
+    color: var(--text-brand-on-brand);
+  }
 }
 
 #offcanvasExample {
