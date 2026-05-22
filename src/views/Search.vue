@@ -252,19 +252,25 @@ const formatDateRange = (start, end) => {
       </div>
 
       <div class="results-scroll-area d-flex flex-column">
-        <div v-for="event in filteredEvents" :key="event.id">
-          <HorizontalEventCard 
-            :id="event.id"
-            :title="event.title" 
-            :category="event.category" 
-            :rating="event.rating"
-            :ticket-status="event.ticketStatus" 
-            :time="formatDateRange(event.startDate, event.endDate)"
-            :city="event.city"
-            :location="event.venue" 
-            :price-range="formatPrice(event.price)"
-            :image="event.imageUrl" 
-          />
+        <template v-if="filteredEvents.length > 0">
+          <div v-for="event in filteredEvents" :key="event.id">
+            <HorizontalEventCard
+              :id="event.id"
+              :title="event.title"
+              :category="event.category"
+              :rating="event.rating"
+              :ticket-status="event.ticketStatus"
+              :time="formatDateRange(event.startDate, event.endDate)"
+              :city="event.city"
+              :location="event.venue"
+              :price-range="formatPrice(event.price)"
+              :image="event.imageUrl"
+            />
+          </div>
+        </template>
+        <div v-else class="empty-state d-flex flex-column align-items-center justify-content-center gap-3">
+          <h2>暫無搜尋結果</h2>
+          <p class="empty-state__subtitle">　調整搜尋條件，踏上充滿驚喜的藝文旅程！</p>
         </div>
       </div>
     </div>
@@ -383,6 +389,28 @@ const formatDateRange = (start, end) => {
 .fade-leave-to {
   opacity: 0;
   transform: translateY(-20px);
+}
+
+.empty-state {
+  flex: 1;
+  min-height: 400px;
+  color: var(--text-default-tertiary);
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: center;
+    word-break: keep-all;
+  }
 }
 
 .winherit {
