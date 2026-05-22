@@ -41,45 +41,45 @@ const closeSearch = () => {
       </a>
 
       <div class="d-flex align-items-center gap-md-4 gap-0 ms-4 h-100">
-        <div class="animate-entrance" style="animation-delay: 0.1s">
-          <div 
-            class="search-wrapper" 
-            :class="{ 'expanded': isSearchVisible }"
-            @click="!isSearchVisible && expandSearch()"
-          >
-            <div class="search-bar-inner d-flex align-items-center gap-2 px-md-3 px-0">
-              <button 
-                v-if="isSearchVisible" 
-                class="btn btn-close-search p-0 d-md-none"
-                @click.stop="closeSearch"
-              >
-                <Icon icon="ph:caret-left" width="24px" />
-              </button>
-              
-              <Icon icon="ph:magnifying-glass" class="search-icon" width="24px"/>
-              
-              <input 
-                v-if="isSearchVisible"
-                v-model="searchQuery"
-                type="text" 
-                placeholder="今天想看些什麼？" 
-                class="search-input-field flex-grow-1"
-                @keyup.enter="handleSearch(searchQuery)"
-                ref="searchInput"
-              />
-              <span v-else class="search-placeholder-text">搜尋</span>
-              
-              <button 
-                v-if="isSearchVisible" 
-                class="btn btn-search-trigger p-0 ms-2"
-                @click.stop="handleSearch(searchQuery)"
-              >
-                搜尋
-              </button>
-            </div>
-          </div>
+        <div
+          class="search-wrapper animate-entrance"
+          style="animation-delay: 0.1s"
+          :class="{ 'expanded': isSearchVisible }"
+          @click="!isSearchVisible && expandSearch()"
+        >
+          <div class="search-bar-inner d-flex align-items-center gap-2 px-md-3 px-0">
+            <button
+              v-if="isSearchVisible"
+              class="btn btn-close-search p-0 d-md-none"
+              @click.stop="closeSearch"
+            >
+              <Icon icon="ph:caret-left" width="24px" />
+            </button>
 
-          <!-- Search Overlay -->
+            <Icon icon="ph:magnifying-glass" class="search-icon" width="24px"/>
+
+            <input
+              v-if="isSearchVisible"
+              v-model="searchQuery"
+              type="text"
+              placeholder="今天想看些什麼？"
+              class="search-input-field flex-grow-1"
+              @keyup.enter="handleSearch(searchQuery)"
+              ref="searchInput"
+            />
+            <span v-else class="search-placeholder-text">搜尋</span>
+
+            <button
+              v-if="isSearchVisible"
+              class="btn btn-search-trigger p-0 ms-2"
+              @click.stop="handleSearch(searchQuery)"
+            >
+              搜尋
+            </button>
+          </div>
+        </div>
+
+        <Teleport to="body">
           <Transition name="fade-slide">
             <SearchOverlay
               v-if="isSearchVisible"
@@ -87,7 +87,7 @@ const closeSearch = () => {
               @search="handleSearch"
             />
           </Transition>
-        </div>
+        </Teleport>
 
         <div class="navbar-actions">
           <div class="nav-item-icon animate-entrance" style="animation-delay: 0.2s">
@@ -131,13 +131,21 @@ const closeSearch = () => {
 <style scoped lang="scss">
 .custom-navbar {
   background-color: var(--background-brand-secondary);
-  height: 72px;
+  height: var(--component-navbar-height);
   border-bottom: 1px solid #eeeeee;
   padding: 0 60px !important;
   z-index: 2000;
 
   @media (max-width: 1200px) {
     padding: 0 20px !important;
+  }
+}
+
+.navbar-brand img {
+  height: 32px;
+
+  @media (max-width: 768px) {
+    height: 22px;
   }
 }
 
@@ -181,17 +189,17 @@ const closeSearch = () => {
     }
 
     &.expanded {
-      position: absolute;
-      top: -36px;
-      right: -164px;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100vw;
-      height: 72px;
+      height: var(--component-navbar-height);
       border-radius: 0;
       z-index: 2100;
       padding: 0 20px;
       background-color: var(--background-brand-secondary);
       border-bottom: 1px solid #eeeeee;
-      
+
       .search-bar-inner {
         width: 100%;
         gap: 12px !important;

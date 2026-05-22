@@ -6,12 +6,15 @@ import FloatingNavTabs from '@/components/ui/FloatingNavTabs.vue';
 <template>
   <div>
     <PublicNavbar />
-    <main>
-      <RouterView class="pt72px"/>
+    <main class="page-top-offset">
+      <RouterView />
     </main>
     <FloatingNavTabs />
   </div>
 </template>
 
 <style scoped lang="scss">
+.page-top-offset {
+  padding-top: var(--component-navbar-height);
+}
 </style>

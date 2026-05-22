@@ -118,3 +118,6 @@ This project is frequently built from Figma via the Figma MCP server. When imple
 2. Figma MCP output is React + Tailwind — treat it as a representation of design/behavior, **not** final code. Translate to Vue 3 + Bootstrap following the conventions above, reusing existing components, tokens, and the spacing utilities.
 3. If the MCP server returns a localhost source for an image/SVG, use it directly — don't substitute placeholders or import new asset/icon packages.
 4. The Figma source is often a rough wireframe. When it conflicts with clean layout, follow Figma's structure but apply Bootstrap styling and reasonable alignment (e.g. `align-items-center`) rather than copying unaligned frames. Validate the result against the screenshot.
+
+## GIT COMMIT MESSAGE RULES
+- Always generate git commit messages in Chinese Traditional (繁體中文).

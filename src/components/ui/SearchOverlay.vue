@@ -100,11 +100,11 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 .search-overlay-container {
-  position: absolute;
-  top: 48px;
-  right: 0;
+  position: fixed;
+  top: var(--component-navbar-height);
+  right: 60px; // matches navbar padding at ≥1200px
   width: 600px;
-  z-index: 1050;
+  z-index: 2050;
   display: flex;
   flex-direction: column;
 
@@ -112,11 +112,19 @@ onUnmounted(() => {
     width: 500px;
   }
 
-  @media (max-width: 992px) {
-    width: calc(100vw - 48px);
-    top: 60px;
-    right: -140px;
+  @media (max-width: 1200px) {
+    right: 20px; // matches navbar padding at <1200px
+  }
 
+  @media (max-width: 992px) {
+    width: 400px;
+  }
+
+  @media (max-width: 768px) {
+    right: 0;
+    left: 0;
+    width: calc(100vw - 16px);
+    border-radius: 0;
   }
 }
 
@@ -173,6 +181,9 @@ onUnmounted(() => {
 .search-dropdown-content {
   background-color: var(--background-default-default);
   border-radius: var(--border-radius-1);
+  @media (max-width: 768px) {
+    border-radius: 0;
+  }
 }
 
 .section-title {

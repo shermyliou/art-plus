@@ -322,6 +322,10 @@ $slide-padding: 24px;
   --component-card-max-width: #{$component-card-max-width};
   --component-navbar-height: #{$component-navbar-height};
 
+  @media (max-width: 768px) {
+    --component-navbar-height: 52px;
+  }
+
   // Border Radius
   --border-radius-0: #{$border-radius-0};
   --border-radius-1: #{$border-radius-1};

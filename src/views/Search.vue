@@ -183,9 +183,9 @@ const formatDateRange = (start, end) => {
     <div class="search-content flex-grow-1 d-flex flex-column px-4 overflow-y-auto g-3 container-md ms-0">
 
       <!-- Fixed Header Section -->
-      <div class="fixed-header-section w-100 row g-0 flex-nowrap justify-content-between align-items-center sticky-top pt-4 pb-2">
+      <div class="fixed-header-section w-100 d-flex flex-nowrap justify-content-between align-items-center sticky-top pt-4 pb-2">
 
-        <button class="btn btn-outline-secondary w-auto text-nowrap sidebar-toggle" type="button" data-bs-toggle="offcanvas"
+        <button class="btn btn-outline-secondary flex-shrink-0 text-nowrap sidebar-toggle" type="button" data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
           <Icon icon="ph:funnel" width="1em" height="1em" />
           篩選
@@ -208,7 +208,7 @@ const formatDateRange = (start, end) => {
         </div>
 
         <!-- Nav Tabs Section -->
-        <ul class="nav nav-pills overflow-x-auto flex-shrink-1">
+        <ul class="nav nav-pills overflow-x-auto flex-shrink-1 nav-tabs-scroll">
           <li v-for="tab in tabs" :key="tab.name" class="nav-item">
             <a class="nav-link d-flex align-items-center justify-content-center gap-1"
               :class="{ active: activeTab === tab.name }" href="#" @click.prevent="activeTab = tab.name">
@@ -220,7 +220,7 @@ const formatDateRange = (start, end) => {
           </li>
         </ul>
         <!-- Filter/Sort Section -->
-        <div class="col-2 d-flex justify-content-end">
+        <div class="flex-shrink-0 d-flex justify-content-end">
           <div class="dropdown">
             <button class="btn btn-outline-secondary bg-white btn-rect btn-sort-dropdown dropdown-toggle" type="button" id="sortDropdown"
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -294,16 +294,31 @@ const formatDateRange = (start, end) => {
   background-color: var(--background-default-default);
   z-index: 1020;
 }
+
+.nav-tabs-scroll {
+  min-width: 0; // allows flex child to shrink below its content size so overflow-x-auto kicks in
+  flex-wrap: nowrap;
+}
   
 @media (max-width: 768px) {
-  .sidebar{
+  .sidebar {
     display: none;
   }
 
   .sidebar-toggle {
     display: flex;
     align-items: center;
-    flex-shrink: 1;
+    flex-shrink: 0;
+  }
+
+  .search-content {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  .btn-calendar-fab {
+    bottom: 16px;
+    right: 16px;
   }
 }
 
@@ -313,7 +328,7 @@ const formatDateRange = (start, end) => {
   }
 
 .search-page-container {
-  height: 100vh;
+  height: 100dvh; // dvh accounts for mobile browser dynamic toolbars
   overflow: hidden;
 }
 
@@ -391,7 +406,7 @@ const formatDateRange = (start, end) => {
 
 #offcanvasExample {
   &.show {
-    padding-top: 72px;
+    padding-top: var(--component-navbar-height);
     width: auto;
   }
 }
