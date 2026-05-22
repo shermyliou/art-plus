@@ -480,6 +480,13 @@ collectFilters();
   background-color: var(--background-default-default);
 }
 
+@include media-breakpoint-up(md) {
+  .filter-sidebar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 @include media-breakpoint-down(md) {
   .filter-sidebar {
     max-width: none;

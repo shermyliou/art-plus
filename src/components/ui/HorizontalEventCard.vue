@@ -129,6 +129,11 @@ const handleFavoriteClick = () => {
     border-radius: var(--border-radius-1);
     overflow: hidden;
 
+    @media (max-width: 319px) {
+      width: 80px;
+      height: 107px;
+    }
+
     img {
       width: 100%;
       height: 100%;

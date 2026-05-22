@@ -191,12 +191,6 @@ const formatDateRange = (start, end) => {
       <!-- Fixed Header Section -->
       <div class="fixed-header-section w-100 d-flex flex-nowrap justify-content-between align-items-center sticky-top pt-4 pb-2">
 
-        <button class="btn btn-outline-secondary flex-shrink-0 text-nowrap sidebar-toggle" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-          <Icon icon="ph:funnel" width="1em" height="1em" />
-          篩選
-        </button>
-
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
           aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header border-bottom">
@@ -226,6 +220,11 @@ const formatDateRange = (start, end) => {
           </li>
         </ul>
         <!-- Filter/Sort Section -->
+        <button class="btn btn-outline-secondary flex-shrink-0 text-nowrap sidebar-toggle" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          <Icon icon="ph:funnel" width="1em" height="1em" />
+          <!-- 篩選 -->
+        </button>
         <div class="flex-shrink-0 d-flex justify-content-end">
           <div class="dropdown">
             <button class="btn btn-outline-secondary bg-white btn-rect btn-sort-dropdown dropdown-toggle" type="button" id="sortDropdown"
@@ -235,7 +234,7 @@ const formatDateRange = (start, end) => {
                   <div class="sort-icon-wrapper">
                     <Icon icon="ph:sort-ascending" width="20" height="20" class="sort-icon" />
                   </div>
-                  <span class="sort-text">排序</span>
+                  <span class="sort-text d-none d-md-block">排序</span>
                 </div>
                 <!-- <Icon icon="ph:caret-up" width="16" height="16" class="caret-icon" /> -->
               </div>
@@ -293,6 +292,7 @@ const formatDateRange = (start, end) => {
 <style scoped lang="scss">
 .sidebar-toggle {
     display: none; 
+    --bs-btn-padding-x: .6875rem;
   }
 
 .fixed-header-section {
@@ -306,6 +306,12 @@ const formatDateRange = (start, end) => {
   flex-wrap: nowrap;
 }
   
+@media (min-width: 769px) {
+  .search-content {
+    padding-left: 8px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .sidebar {
     display: none;
@@ -417,3 +423,7 @@ const formatDateRange = (start, end) => {
   }
 }
 </style>
+
+.dropdown-toggle {
+  --bs-btn-padding-x: .6875rem;
+}
