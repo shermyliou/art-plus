@@ -3,6 +3,7 @@ import PublicLayout from '@/components/common/PublicLayout.vue'
 import HomeView from '@/views/HomeView.vue'
 import Search from '@/views/Search.vue'
 import EventDetail from '@/views/EventDetail.vue'
+import EventDetailV2 from '@/views/EventDetailV2.vue'
 import OrganizerLayout from '@/components/common/OrganizerLayout.vue'
 import EventEdit from '@/views/EventEdit.vue'
 import BootstrapChecker from '@/views/BootstrapChecker.vue'
@@ -30,6 +31,12 @@ const routes = [
         component: EventDetail,
         name: 'event-detail',
         meta: { title: 'Arts+' } // Dynamic title
+      },
+      {
+        path: 'event-v2/:id',
+        component: EventDetailV2,
+        name: 'event-detail-v2',
+        meta: { title: 'Arts+' }
       },
       {
         path: 'bootstrap',
