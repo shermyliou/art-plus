@@ -168,18 +168,18 @@ const formatPrice = p => `NT$ ${p.toLocaleString()}`;
       <img :src="coverImage" :alt="event?.title" class="event-detail-v2__banner-img" />
     </div>
 
-    <!-- 活動標題 + 操作列 -->
+    <!-- 活動標題 + 操作列 (sticky) -->
     <div class="event-detail-v2__header">
       <div class="event-detail-v2__header-info">
-        <span class="badge bg-primary rounded-pill mb-2">{{ event?.category || '藝文演出' }}</span>
+        <span class="event-detail-v2__category-badge">{{ event?.category || '藝文演出' }}</span>
         <h1 class="event-detail-v2__title">{{ event?.title }}</h1>
       </div>
       <div class="event-detail-v2__header-actions">
-        <p class="text-secondary mb-3">{{ dateRange }}</p>
-        <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-primary rounded-pill px-4 py-2">購票</button>
-          <button class="btn btn-outline-secondary rounded-circle p-2">
-            <Icon icon="ph:heart" width="20" height="20" />
+        <p class="event-detail-v2__date-range">{{ dateRange }}</p>
+        <div class="event-detail-v2__interaction">
+          <button class="event-detail-v2__buy-btn">購買</button>
+          <button class="event-detail-v2__save-btn" aria-label="收藏">
+            <Icon icon="ph:heart" width="24" />
           </button>
         </div>
       </div>
@@ -200,10 +200,8 @@ const formatPrice = p => `NT$ ${p.toLocaleString()}`;
       </div>
     </div>
 
-    <!-- 分頁導覽 (sticky) -->
-    <div class="event-detail-v2__tabs">
-      <EventNavTabs :tabs="tabs" v-model:activeTab="activeTab" />
-    </div>
+    <!-- 分頁導覽 (sticky)：直接放在大容器下，讓 nav-wrapper 的 containing block 夠高才能 sticky -->
+    <EventNavTabs :tabs="tabs" v-model:activeTab="activeTab" />
 
     <!-- 雙欄主體：主內容 + 固定側欄 -->
     <div class="event-detail-v2__body">
@@ -507,6 +505,11 @@ const formatPrice = p => `NT$ ${p.toLocaleString()}`;
   margin: 0 auto;
   padding: 0 24px 80px;
 
+  // navbar (72px) + header (109px) = 181px：NavTabs 疊在 sticky 標題列下方
+  :deep(.nav-wrapper) {
+    top: calc(var(--size-component-navbar-height) + 109px) !important;
+  }
+
   // --- 橫幅 ---
   &__banner {
     width: 100%;
@@ -523,34 +526,117 @@ const formatPrice = p => `NT$ ${p.toLocaleString()}`;
     }
   }
 
-  // --- 標題列 ---
+  // --- 標題列 (sticky) ---
   &__header {
+    position: sticky;
+    top: var(--size-component-navbar-height);
+    z-index: 1025;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 24px;
-    padding: 12px 0 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-default-default);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
   }
 
   &__header-info {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
   }
 
+  &__category-badge {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    background: #fff;
+    border: 1px solid var(--border-default-default);
+    color: var(--text-default-default);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 4px 12px;
+    border-radius: 1000px;
+    margin-bottom: 12px;
+  }
+
   &__title {
-    font-size: 28px;
+    font-size: 36px;
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.2;
+    letter-spacing: -0.36px;
     margin: 0;
     color: var(--text-default-default);
   }
 
   &__header-actions {
     flex-shrink: 0;
+    width: 238px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: stretch;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__date-range {
+    font-size: 14px;
+    color: var(--text-default-secondary);
+    letter-spacing: 0.14px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  &__interaction {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+  }
+
+  &__buy-btn {
+    flex: 1;
+    height: 48px;
+    background: $brand-700;
+    color: $brand-50;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1.92px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &__save-btn {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-default-default);
+    transition: color 0.2s ease;
+    padding: 0;
+
+    &:hover {
+      color: $brand-700;
+    }
   }
 
   // --- 評分列 ---
@@ -572,11 +658,6 @@ const formatPrice = p => `NT$ ${p.toLocaleString()}`;
     color: var(--icon-default-secondary);
   }
 
-  // --- 分頁 ---
-  &__tabs {
-    padding: 8px 0;
-  }
-
   // --- 雙欄主體 ---
   &__body {
     display: grid;
@@ -591,9 +672,10 @@ const formatPrice = p => `NT$ ${p.toLocaleString()}`;
   }
 
   // --- 固定右側欄 ---
+  // navbar (72px) + header (109px) + navtabs (~80px) = 261px
   &__sidebar {
     position: sticky;
-    top: 140px;
+    top: calc(var(--size-component-navbar-height) + 109px + 80px);
 
     @media (max-width: 1100px) {
       display: none;
@@ -901,6 +983,7 @@ const formatPrice = p => `NT$ ${p.toLocaleString()}`;
     flex: 1;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
